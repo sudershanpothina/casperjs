@@ -10,8 +10,14 @@ casper.then(function(){
 casper.thenClick(x('//*[@id="searchbox"]/button'),function(){
     console.log('searching for data');
 });
-casper.wait(5000,function(){
-    casper.capture('image2.png');
+casper.wait(2000,function(){
+    var text = casper.fetchText(x('//*[@id="best-sellers_block_right"]/div/ul/li[1]/div/h5/a'));
+    console.log(text)
+    casper.click(x('//*[@id="best-sellers_block_right"]/div/ul/li[1]/div/h5/a'));
     // wait 5 seconds before capturing the image
 })
+casper.wait(2000,function(){
+    casper.capture('image2.png')
+})
+
 casper.run();
